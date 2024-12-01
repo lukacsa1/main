@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Pólók Weboldala</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Felső navigációs sáv -->
+    <header>
+        <div class="navbar">
+            <h1 class="logo">Pólók</h1>
+            <nav class="navbar-right">
+                <ul>
+                    <li><a href="#" onclick="filterProducts('none')">Összes</a></li>
+                    <li><a href="#" onclick="filterProducts('női')">Női</a></li>
+                    <li><a href="#" onclick="filterProducts('férfi')">Férfi</a></li>
+                    <li><a href="#" onclick="filterProducts('unisex')">Unisex</a></li>
+                </ul>
+                <input class="search-input" type="text" placeholder="Keresés...">
+                <a href="#" class="cart-link" id="cart-link">Kosár (0)</a>
+                <a href="#" class="login-link">Bejelentkezés</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner szakasz -->
+    <section class="banner">
+        <h2>Fedezd fel a legújabb pólóinkat!</h2>
+        <p>Válassz a legfrissebb trendek közül és vásárolj online.</p>
+    </section>
+
+    <!-- Termékek -->
+    <section class="featured-products">
+        <h2>Ajánlott termékek</h2>
+        <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- Kosár felugró ablak -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <span class="close" onclick="closeCartModal()">×</span>
+            <h2>Kosár</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <p>Összesen: <span id="cart-total-price">0 Ft</span></p>
+                <button onclick="checkout()">Tovább a pénztárhoz</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pólók Webshop. Minden jog fenntartva.</p>
+    </footer>
+</body>
+</html>
