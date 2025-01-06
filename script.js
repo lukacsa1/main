@@ -1,131 +1,136 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Termékek adatainak definiálása
-    const products = [
-        { id: 1, name: "Fehér Póló", price: 4990, image: "shirt1.jpg", sizes: ["S", "M", "L"], category: "női" },
-        { id: 2, name: "Fekete Póló", price: 4990, image: "shirt2.jpg", sizes: ["S", "M", "L"], category: "férfi" },
-        { id: 3, name: "Piros Póló", price: 4990, image: "shirt3.jpg", sizes: ["S", "M", "L"], category: "unisex" },
-        { id: 4, name: "Kék Póló", price: 4990, image: "shirt4.jpg", sizes: ["S", "M", "L"], category: "női" },
-        { id: 5, name: "Zöld Póló", price: 4990, image: "shirt5.jpg", sizes: ["S", "M", "L"], category: "férfi" },
-    ];
+    fetch('https://localhost:7117/termekek')
+    .then(response => response.json())
+    .then(data => {
+        // Az új termékek hozzáadása a tömbhöz
+        const allproducts = [...data]; // A fetch válaszban érkező adatok a 'data' változóban vannak
+        console.log(allproducts); // Az új tömb kiírása
 
-    const cart = [];
-    const cartModal = document.getElementById("cartModal");
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotalPrice = document.getElementById("cart-total-price");
-    const cartLink = document.getElementById("cart-link");
-    const productGrid = document.getElementById("product-grid");
+        // A termékek elérhetősége a 'products' tömbben
+        const products = [...allproducts];
 
-    // Formázás pénzhez
-    function formatPrice(price) {
-        return price.toLocaleString() + " Ft";
-    }
+        // Termékek adatainak definiálása
+        const cart = [];
+        const cartModal = document.getElementById("cartModal");
+        const cartItemsContainer = document.getElementById("cart-items");
+        const cartTotalar = document.getElementById("cart-total-ar");
+        const cartLink = document.getElementById("cart-link");
+        const productGrid = document.getElementById("product-grid");
 
-    // Termékek megjelenítése
-    function displayProducts(filteredProducts) {
-        productGrid.innerHTML = "";
-        filteredProducts.forEach(product => {
-            const productHTML = `
-                <div class="product-item">
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${formatPrice(product.price)}</p>
-                    <div class="product-options">
-                        <select id="size-${product.id}">
-                            ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
-                        </select>
-                        <input type="number" id="quantity-${product.id}" value="1" min="1" max="10">
-                    </div>
-                    <button class="buy-now" data-id="${product.id}">Megvásárol</button>
-                </div>
-            `;
-            productGrid.innerHTML += productHTML;
-        });
-    }
-
-    // Kategória szűrés
-    function filterProducts(category) {
-        let filteredProducts = [];
-
-        if (category === 'none') {
-            filteredProducts = products;  // Ha nincs kategória szűrés, mutassa az összes terméket
-        } else {
-            filteredProducts = products.filter(product => product.category === category);
+        // Formázás pénzhez
+        function formatar(ar) {
+            return ar.toLocaleString() + " Ft";
         }
 
-        displayProducts(filteredProducts);
-    }
+        // Termékek megjelenítése
+        function displayProducts(filteredProducts) {
+            productGrid.innerHTML = "";
+            filteredProducts.forEach(product => {
+                const productHTML = `
+                    <div class="product-item">
+                        <img src="${product.kep}" alt="${product.termekNeve}">
+                        <h3>${product.termekNeve}</h3>
+                        <p>${formatar(product.ar)}</p>
+                        <div class="product-options">
+                            <select id="size-${product.id}">
+                                ${JSON.parse(product.meret).map(size => `<option value="${size}">${size}</option>`).join('')}
+                            </select>
+                            <input type="number" id="quantity-${product.id}" value="1" min="1" max="10">
+                        </div>
+                        <button class="buy-now" data-id="${product.id}">Megvásárol</button>
+                    </div>
+                `;
+                productGrid.innerHTML += productHTML;
+            });
+        }
 
-    // Kosárba helyezés logika
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("buy-now")) {
-            const productId = event.target.getAttribute("data-id");
-            const selectedSize = document.querySelector(`#size-${productId}`).value;
-            const quantity = document.querySelector(`#quantity-${productId}`).value;
+        // Kategória szűrés
+        function filterProducts(kategoria) {
+            let filteredProducts = [];
 
-            // Kosárba rakás
-            const product = products.find(p => p.id == productId);
-
-            // Ellenőrzés, hogy a termék már benne van-e a kosárban
-            const existingItemIndex = cart.findIndex(item => item.product.id === productId && item.size === selectedSize);
-            if (existingItemIndex !== -1) {
-                // Ha már benne van, frissítjük a mennyiséget
-                cart[existingItemIndex].quantity += parseInt(quantity);
+            if (kategoria === 'none') {
+                filteredProducts = products;  // Ha nincs kategória szűrés, mutassa az összes terméket
             } else {
-                // Ha nincs benne, hozzáadjuk
-                cart.push({ product, size: selectedSize, quantity: parseInt(quantity) });
+                filteredProducts = products.filter(product => product.kategoria === kategoria);
             }
 
-            updateCartModal();
+            displayProducts(filteredProducts);
         }
-    });
 
-    // Kosár felugró ablak frissítése
-    function updateCartModal() {
-        cartItemsContainer.innerHTML = "";
-        let totalPrice = 0;
+        // Kosárba helyezés logika
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("buy-now")) {
+                const productId = event.target.getAttribute("data-id");
+                const selectedSize = document.querySelector(`#size-${productId}`).value;
+                const quantity = document.querySelector(`#quantity-${productId}`).value;
 
-        cart.forEach(item => {
-            const { product, size, quantity } = item;
-            totalPrice += product.price * quantity;
+                // Kosárba rakás
+                const product = products.find(p => p.id == productId);
 
-            const cartItemHTML = `
-                <div class="cart-item">
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="cart-item-details">
-                        <p>${product.name}</p>
-                        <p>Ár: ${formatPrice(product.price)}</p>
-                        <label for="size-${product.id}">Méret:</label>
-                        <select id="size-${product.id}" class="cart-item-size">
-                            ${product.sizes.map(sizeOption => `<option value="${sizeOption}" ${sizeOption === size ? 'selected' : ''}>${sizeOption}</option>`).join('')}
-                        </select>
-                        <label for="quantity-${product.id}">Mennyiség:</label>
-                        <input type="number" id="quantity-${product.id}" value="${quantity}" min="1" class="cart-item-quantity">
-                    </div>
-                    <div class="cart-item-price">${formatPrice(product.price * quantity)}</div>
-                </div>
-            `;
-            cartItemsContainer.innerHTML += cartItemHTML;
+                // Ellenőrzés, hogy a termék már benne van-e a kosárban
+                const existingItemIndex = cart.findIndex(item => item.product.id === productId && item.size === selectedSize);
+                if (existingItemIndex !== -1) {
+                    // Ha már benne van, frissítjük a mennyiséget
+                    cart[existingItemIndex].quantity += parseInt(quantity);
+                } else {
+                    // Ha nincs benne, hozzáadjuk
+                    cart.push({ product, size: selectedSize, quantity: parseInt(quantity) });
+                }
+
+                updateCartModal();
+            }
         });
 
-        cartTotalPrice.innerText = formatPrice(totalPrice);
-        cartLink.innerText = `Kosár (${cart.length})`;
-    }
+        // Kosár felugró ablak frissítése
+        function updateCartModal() {
+            cartItemsContainer.innerHTML = "";
+            let totalar = 0;
 
-    // Kosár modal bezárása
-    function closeCartModal() {
-        cartModal.style.display = "none";
-    }
+            cart.forEach(item => {
+                const { product, size, quantity } = item;
+                totalar += product.ar * quantity;
 
-    // Kosár megjelenítése
-    function openCartModal() {
-        cartModal.style.display = "block";
-    }
+                const cartItemHTML = `
+                    <div class="cart-item">
+                        <img src="${product.kep}" alt="${product.termekNeve}">
+                        <div class="cart-item-details">
+                            <p>${product.termekNeve}</p>
+                            <p>Ár: ${formatar(product.ar)}</p>
+                            <p>Méret: ${JSON.parse(product.meret)}</p>
+                            <label for="size-${product.id}">Méret:</label>
+                            <select id="size-${product.id}" class="cart-item-size">
+                                ${JSON.parse(product.meret).map(sizeOption => `<option value="${sizeOption}" ${sizeOption === size ? 'selected' : ''}>${sizeOption}</option>`).join('')}
+                            </select>
+                            <label for="quantity-${product.id}">Mennyiség:</label>
+                            <input type="number" id="quantity-${product.id}" value="${quantity}" min="1" class="cart-item-quantity">
+                        </div>
+                        <div class="cart-item-ar">${formatar(product.ar * quantity)}</div>
+                    </div>
+                `;
+                cartItemsContainer.innerHTML += cartItemHTML;
+            });
 
-    // Kosár tartalma elmentésése
-    function checkout() {
-        alert("Vásárlás!");
-    }
+            cartTotalar.innerText = formatar(totalar);
+            cartLink.innerText = `Kosár (${cart.length})`;
+        }
 
-    // Alapértelmezett termékek megjelenítése
-    displayProducts(products);
+        // Kosár modal bezárása
+        function closeCartModal() {
+            cartModal.style.display = "none";
+        }
+
+        // Kosár megjelenítése
+        function openCartModal() {
+            cartModal.style.display = "block";
+        }
+
+        // Kosár tartalma elmentésése
+        function checkout() {
+            alert("Vásárlás!");
+        }
+
+        // Alapértelmezett termékek megjelenítése
+        displayProducts(products);
+    })
+    .catch(error => console.error('Hiba a fetch kérés során:', error));
 });
