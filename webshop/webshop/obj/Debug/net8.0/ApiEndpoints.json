@@ -1,0 +1,42 @@
+[
+  {
+    "ContainingType": "webshop.Controllers.FelhasznalokControllers",
+    "Method": "Get",
+    "RelativePath": "felhasznalok",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.RendelesControllers",
+    "Method": "Get",
+    "RelativePath": "Rendeles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.SzamlazasControllers",
+    "Method": "Get",
+    "RelativePath": "szamlazas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.termekekControllers",
+    "Method": "Get",
+    "RelativePath": "termekek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
