@@ -17,6 +17,7 @@ namespace webshop.Controllers
                 {
                     List<Felhasznalok> response = context.Felhasznaloks.ToList();
                     return Ok(response);
+                    //teszteles
                 }
                 catch (Exception ex)
                 {
