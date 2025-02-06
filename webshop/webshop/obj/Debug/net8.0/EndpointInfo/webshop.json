@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "webshop",
+    "version": "1.0"
+  },
+  "paths": {
+    "/felhasznalok": {
+      "get": {
+        "tags": [
+          "FelhasznalokControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Rendeles": {
+      "get": {
+        "tags": [
+          "RendelesControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/szamlazas": {
+      "get": {
+        "tags": [
+          "SzamlazasControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/termekek": {
+      "get": {
+        "tags": [
+          "termekekControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

@@ -35,14 +35,19 @@ public partial class WebshopContext : DbContext
 
             entity.ToTable("felhasznalok");
 
-            entity.HasIndex(e => e.LoginNev, "LoginNev");
+            entity.HasIndex(e => e.LoginName, "LoginNev");
 
             entity.HasIndex(e => e.SzamlazasiCimId, "fk_szamlazasiCim");
 
             entity.Property(e => e.Id).HasColumnType("int(32)");
             entity.Property(e => e.Email).HasMaxLength(64);
-            entity.Property(e => e.Jelszo).HasMaxLength(32);
-            entity.Property(e => e.LoginNev).HasMaxLength(32);
+            entity.Property(e => e.Hash)
+                .HasMaxLength(64)
+                .HasColumnName("HASH");
+            entity.Property(e => e.LoginName).HasMaxLength(32);
+            entity.Property(e => e.Salt)
+                .HasMaxLength(64)
+                .HasColumnName("SALT");
             entity.Property(e => e.SzamlazasiCimId)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("int(32)")
