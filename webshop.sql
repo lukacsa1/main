@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2025. Jan 06. 17:03
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2025. Feb 06. 13:36
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -29,23 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `felhasznalok` (
   `Id` int(32) NOT NULL,
-  `LoginNev` varchar(32) NOT NULL,
-  `Jelszo` varchar(32) NOT NULL,
+  `LoginName` varchar(32) NOT NULL,
   `Email` varchar(64) NOT NULL,
-  `szamlazasiCimId` int(32) DEFAULT NULL
+  `szamlazasiCimId` int(32) DEFAULT NULL,
+  `SALT` varchar(64) NOT NULL,
+  `HASH` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `felhasznalok`
 --
 
-INSERT INTO `felhasznalok` (`Id`, `LoginNev`, `Jelszo`, `Email`, `szamlazasiCimId`) VALUES
-(1, 'user1', 'password123', 'user1@example.com', NULL),
-(2, 'user2', 'password456', 'user2@example.com', NULL),
-(3, 'admin', 'admin123', 'admin@example.com', NULL),
-(4, 'user1', 'password123', 'user1@example.com', 1),
-(5, 'user2', 'password456', 'user2@example.com', 2),
-(6, 'user3', 'password789', 'user3@example.com', 3);
+INSERT INTO `felhasznalok` (`Id`, `LoginName`, `Email`, `szamlazasiCimId`, `SALT`, `HASH`) VALUES
+(1, 'user1', 'user1@example.com', NULL, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384'),
+(2, 'user2', 'user2@example.com', NULL, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384'),
+(3, 'admin', 'admin@example.com', NULL, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384'),
+(4, 'user1', 'user1@example.com', 1, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384'),
+(5, 'user2', 'user2@example.com', 2, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384'),
+(6, 'user3', 'user3@example.com', 3, 'sp8i4p6c5m0WwrtVD6xz3LqUIwLlGAdk8ZD73OUaVCGE4zZzBCd16c7J0nMam3Do', 'e518622febbb65115dd1ad163ffaa7e333ac002db2537a37aaad4293081e9384');
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,7 @@ INSERT INTO `termekek` (`Id`, `TermekNeve`, `meret`, `ar`, `kep`, `kategoria`) V
 --
 ALTER TABLE `felhasznalok`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `LoginNev` (`LoginNev`),
+  ADD KEY `LoginNev` (`LoginName`),
   ADD KEY `fk_szamlazasiCim` (`szamlazasiCimId`);
 
 --
