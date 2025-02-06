@@ -107,14 +107,14 @@ CREATE TABLE `termekek` (
 --
 
 INSERT INTO `termekek` (`Id`, `TermekNeve`, `meret`, `ar`, `kep`, `kategoria`) VALUES
-(1, 'Női Ruházat', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'női'),
-(2, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női Ruházat'),
-(3, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női Ruházat'),
-(4, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női Ruházat'),
-(5, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi Ruházat'),
-(6, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi Ruházat'),
-(7, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi Ruházat'),
-(8, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi Ruházat');
+(1, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
+(2, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
+(3, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
+(4, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
+(5, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
+(6, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
+(7, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
+(8, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi');
 
 --
 -- Indexek a kiírt táblákhoz
