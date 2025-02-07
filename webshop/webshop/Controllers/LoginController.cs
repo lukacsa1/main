@@ -52,7 +52,8 @@ namespace webshop.Controllers
                         return Ok(new LoggedUser
                         {
                             LoginName = loginDTO.LoginName,
-                            Email = loggedUser.Email
+                            Email = loggedUser.Email,
+                            Token = token
                         });
                     }
                     else
