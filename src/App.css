@@ -1,0 +1,400 @@
+/* Alap beállítások */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Teljes oldal háttér és alapszín */
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Navigáció */
+header {
+  background-color: #1c1c1c;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff6f61;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navigáció */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin:10px
+}
+
+.navbar-right ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-right ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.navbar-right ul li a:hover {
+  color: #ff6f61;
+  transform: scale(1.1);
+}
+
+/* Kereső mező */
+.search-input {
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  border: 2px solid #ff6f61;
+  outline: none;
+  background-color: transparent;
+  color: #ffffff;
+  transition: border-color 0.3s;
+}
+
+.search-input::placeholder {
+  color: #ccc;
+}
+
+.search-input:focus {
+  border-color: #ffffff;
+}
+
+/* Kosár és bejelentkezés */
+.cart-link,
+.login-link {
+  color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cart-link:hover,
+.login-link:hover {
+  background-color: #444;
+    color: #ff6f61;
+}
+
+/* Banner */
+.banner {
+  background: linear-gradient(135deg, #ff6f61, #ff3f34);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.banner h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner p {
+  font-size: 1.3rem;
+}
+
+/* Termékek */
+.featured-products {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Termékek kinézete */
+.product-item {
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.product-item:hover {
+  transform: translateY(-8px);
+}
+
+.product-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-item h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 1rem 0;
+}
+
+.product-item p {
+  color: #ff6f61;
+  font-weight: bold;
+}
+
+/* Vásárlás gomb */
+.buy-now {
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, #ff6f61, #ff3f34);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.buy-now:hover {
+  background: linear-gradient(135deg, #e65a4f, #ff6f61);
+  transform: scale(1.05);
+}
+
+/* Kosár */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-modal-content {
+  color: #121212;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.close-cart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-items {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.cart-item-price {
+  font-weight: bold;
+  color: #ff6f61;
+}
+
+/* Kosár végösszeg */
+.cart-total {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.checkout-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.checkout-btn:hover {
+  background-color: #45a049;
+}
+
+/* Bejelentkezési modal */
+.login-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-modal-content {
+  color: #121212;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.login-modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.login-modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-modal-content button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6f61;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-modal-content button:hover {
+  background-color: #e65a4f;
+}
+
+.close-login {
+  position: relative;
+  color:black;
+  right: -130px;
+  top: -15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Bejelentkezési modal */
+.registration-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.registration-modal-content {
+  color: #121212;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.registration-modal-content h2 {
+  margin-bottom: 15px;
+}
+
+.registration-modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.registration-modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registration-modal-content button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6f61;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.registration-modal-content button:hover {
+  background-color: #e65a4f;
+}
+
+.close-registration {
+  position: relative;
+  color:black;
+  right: -130px;
+  top: -15px;
+  font-size: 24px;
+  cursor: pointer;
+  
+}
+
+/* Lábjegyzet */
+footer {
+  background-color: #1a1a1a;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #bfbfbf;
+}
