@@ -33,7 +33,7 @@ namespace webshop.Controllers
                 }
             }
         }
-
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDTO loginDTO)
         {
             using (var context = new WebshopContext())
