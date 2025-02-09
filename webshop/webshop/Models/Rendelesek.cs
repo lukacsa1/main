@@ -11,5 +11,5 @@ public partial class Rendelesek
 
     public int? FelhasznaloId { get; set; }
 
-    public virtual Felhasznalok? Felhasznalo { get; set; }
+    public virtual User? Felhasznalo { get; set; }
 }

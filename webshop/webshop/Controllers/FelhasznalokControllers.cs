@@ -15,14 +15,13 @@ namespace webshop.Controllers
             {
                 try
                 {
-                    List<Felhasznalok> response = context.Felhasznaloks.ToList();
+                    List<User> response = context.Users.ToList();
                     return Ok(response);
-                    //teszteles
                 }
                 catch (Exception ex)
                 {
-                    List<Felhasznalok> hiba = new List<Felhasznalok>();
-                    hiba.Add(new Felhasznalok()
+                    List<User> hiba = new List<User>();
+                    hiba.Add(new User()
                     {
                         Id = -1,
                         Email = ex.Message

@@ -17,7 +17,7 @@ namespace webshop.Controllers
             {
                 try
                 {
-                    Felhasznalok response = await context.Felhasznaloks.FirstOrDefaultAsync(x => x.LoginName == username);
+                    User response = await context.Users.FirstOrDefaultAsync(x => x.LoginName == username);
                     if (response == null)
                     {
                         return NotFound("Nem található felhasználó ezzel a felhasználónévvel.");
@@ -41,7 +41,7 @@ namespace webshop.Controllers
                 try
                 {
                     string Hash = Manager.CreateSHA256(loginDTO.TmpHash);
-                    Felhasznalok loggedUser = await context.Felhasznaloks.FirstOrDefaultAsync(u => u.LoginName == loginDTO.LoginName && u.Hash == Hash);
+                    User loggedUser = await context.Users.FirstOrDefaultAsync(u => u.LoginName == loginDTO.LoginName && u.Hash == Hash);
                     if (loggedUser != null)
                     {
                         string token = Guid.NewGuid().ToString();

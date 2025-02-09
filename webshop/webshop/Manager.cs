@@ -7,7 +7,7 @@ namespace webshop
     public class Manager
     {
         public static int SaltLength = 64;
-        public static Dictionary<string, Felhasznalok> LoggedInUsers = new Dictionary<string, Felhasznalok>();
+        public static Dictionary<string, User> LoggedInUsers = new Dictionary<string, User>();
         public static string GenerateSalt()
         {
             Random random = new Random();

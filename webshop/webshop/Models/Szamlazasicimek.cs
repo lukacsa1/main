@@ -17,5 +17,5 @@ public partial class Szamlazasicimek
 
     public int Iranyitoszam { get; set; }
 
-    public virtual ICollection<Felhasznalok> Felhasznaloks { get; set; } = new List<Felhasznalok>();
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }
