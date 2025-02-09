@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace webshop.Models;
 
@@ -13,17 +14,18 @@ public partial class User
 
     public int? SzamlazasiCimId { get; set; }
 
-    public string Salt { get; set; } = null!;
+    public string? Salt { get; set; } = null!;
 
-    public string Hash { get; set; } = null!;
+    public string? Hash { get; set; } = null!;
 
-    public int Active { get; set; }
+    public int? Active { get; set; }
 
-    public DateTime RegistarionDate { get; set; }
+    public DateTime? RegistarionDate { get; set; }
 
-    public int PermissionLevel { get; set; }
+    public int? PermissionLevel { get; set; }
 
-    public virtual ICollection<Rendelesek> Rendeleseks { get; set; } = new List<Rendelesek>();
+    [JsonIgnore]
+    public virtual ICollection<Rendelesek>? Rendeleseks { get; set; } = new List<Rendelesek>();
 
-    public virtual Szamlazasicimek? SzamlazasiCim { get; set; }
+    public virtual Szamlazasicimek? SzamlazasiCim { get; set; } = null;
 }

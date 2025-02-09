@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\controllers\\felhasznalokcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\controllers\\felhasznalokcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\models\\webshopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\models\\webshopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\controllers\\felhasznalokcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|solutionrelative:webshop\\controllers\\felhasznalokcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DCC47447-2CDE-4B24-8938-AF10ED765B0C}|webshop\\webshop.csproj|c:\\users\\varga\\source\\repos\\projektmunka\\webshop\\webshop\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,33 +106,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\User.cs",
-              "RelativeDocumentMoniker": "webshop\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\User.cs",
-              "RelativeToolTip": "webshop\\Models\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-09T17:44:36.629Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "RegistrationController.cs",
               "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Controllers\\RegistrationController.cs",
               "RelativeDocumentMoniker": "webshop\\Controllers\\RegistrationController.cs",
-              "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Controllers\\RegistrationController.cs*",
-              "RelativeToolTip": "webshop\\Controllers\\RegistrationController.cs*",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAqwBsAAAAcAAAA",
+              "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "webshop\\Controllers\\RegistrationController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAqwAoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-09T17:29:52.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "LoginController.cs",
               "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "webshop\\Controllers\\LoginController.cs",
@@ -145,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "FelhasznalokControllers.cs",
               "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Controllers\\FelhasznalokControllers.cs",
               "RelativeDocumentMoniker": "webshop\\Controllers\\FelhasznalokControllers.cs",
@@ -196,13 +183,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "WebshopContext.cs",
               "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\WebshopContext.cs",
               "RelativeDocumentMoniker": "webshop\\Models\\WebshopContext.cs",
               "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\WebshopContext.cs",
               "RelativeToolTip": "webshop\\Models\\WebshopContext.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA8wBoAAAAJAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwCEAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-04T15:59:30.699Z",
               "EditorCaption": ""
@@ -234,13 +221,26 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\User.cs",
+              "RelativeDocumentMoniker": "webshop\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Models\\User.cs",
+              "RelativeToolTip": "webshop\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T17:44:36.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Manager.cs",
               "DocumentMoniker": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Manager.cs",
               "RelativeDocumentMoniker": "webshop\\Manager.cs",
               "ToolTip": "C:\\Users\\varga\\source\\repos\\ProjektMunka\\webshop\\webshop\\Manager.cs",
               "RelativeToolTip": "webshop\\Manager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-06T09:03:27.481Z",
               "EditorCaption": ""
