@@ -10,6 +10,7 @@ const App = () => {
   const [showCart, setShowCart] = useState(false); // Kosár megjelenítése
   const [showLogin, setShowLogin] = useState(false); // Bejelentkezési modal megjelenítése
   const [showRegistration, setShowRegistration] = useState(false); // Bejelentkezési modal megjelenítése
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Új állapot a bejelentkezéshez
 
   useEffect(() => {
     fetch("https://localhost:7117/Termekek/GetProducts")
@@ -48,21 +49,25 @@ const App = () => {
     setSearchQuery(e.target.value);
   };
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true); // Sikeres bejelentkezés után beállítjuk, hogy be van jelentkezve
+    setShowLogin(false);  // Bezárjuk a bejelentkezési modalt
+  };
 
   return (
     <div>
-      <Navbar cartSize={cart.length} setCategory={setCategory} setSearchQuery={setSearchQuery} handleCategoryChange={handleCategoryChange} setShowCart={setShowCart} setShowLogin={setShowLogin} />
+      <Navbar cartSize={cart.length} setCategory={setCategory} setSearchQuery={setSearchQuery} handleCategoryChange={handleCategoryChange} setShowCart={setShowCart} setShowLogin={setShowLogin}  isLoggedIn={isLoggedIn} />
       <Banner />
       <ProductGrid products={products} category={category} selectedCategory={selectedCategory} searchQuery={searchQuery} addToCart={addToCart} />
       {showCart && <Cart cart={cart} removeFromCart={removeFromCart} setShowCart={setShowCart} />}
-      {showLogin && <LoginModal setShowLogin={setShowLogin} setShowRegistration={setShowRegistration} />} {/* 🔹 Bejelentkezési modal */}
+      {showLogin && <LoginModal setShowLogin={setShowLogin} setShowRegistration={setShowRegistration} onLoginSuccess={handleLoginSuccess} />} {/* 🔹 Bejelentkezési modal */}
       {showRegistration && <RegistrationModal setShowRegistration={setShowRegistration} />} {/* 🔹 Bejelentkezési modal */}
     </div>
   );
 };
 
 //Navigációs sáv
-const Navbar = ({ cartSize, setCategory, setSearchQuery, handleCategoryChange, setShowCart, setShowLogin }) => {
+const Navbar = ({ cartSize, setCategory, setSearchQuery, handleCategoryChange, setShowCart, setShowLogin, isLoggedIn }) => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -87,12 +92,16 @@ const Navbar = ({ cartSize, setCategory, setSearchQuery, handleCategoryChange, s
       <div className="search-bar">
         <input className="search-input" type="text" placeholder="Keresés..." onChange={handleSearchChange} />
       </div>
+      {isLoggedIn && (
       <div className="cart-link" onClick={() => setShowCart(true)} style={{ cursor: "pointer" }}>
         Kosár: {cartSize}
       </div>
+      )}
+      {!isLoggedIn && (
       <div className="login-link" onClick={() => setShowLogin(true)} style={{ cursor: "pointer" }}>
         Bejelentkezés
       </div>
+      )}
     </nav>
   );
 };
@@ -197,10 +206,11 @@ const Cart = ({ cart, removeFromCart, setShowCart }) => {
 };
 
 //Bejelentkezés
-const LoginModal = ({ setShowLogin, setShowRegistration }) => {
+const LoginModal = ({ setShowLogin, setShowRegistration, onLoginSuccess, setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -260,9 +270,12 @@ const LoginModal = ({ setShowLogin, setShowRegistration }) => {
 
       // Sikeres bejelentkezés esetén elmentjük az adatokat
       localStorage.setItem("user", JSON.stringify(data.user));
-      alert("Sikeres bejelentkezés!");
+      
       setShowLogin(false);
-      window.location.reload(); // Frissítjük az oldalt a változások megjelenítéséhez
+      onLoginSuccess();
+      alert("Sikeres bejelentkezés!"+setIsLoggedIn);
+      
+
     } catch (err) {
       setError(err.message); // A hibát jelenítjük meg
     }
