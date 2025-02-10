@@ -4,9 +4,9 @@ using webshop.Models;
 namespace webshop.Controllers
 {
 
-    [Route("felhasznalok")]
+    [Route("termekek")]
     [ApiController]
-    public class FelhasznalokControllers : ControllerBase
+    public class ProductsController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
@@ -15,21 +15,27 @@ namespace webshop.Controllers
             {
                 try
                 {
-                    List<User> response = context.Users.ToList();
+                    List<Termekek> response = context.Termekeks.ToList();
                     return Ok(response);
                 }
                 catch (Exception ex)
                 {
-                    List<User> hiba = new List<User>();
-                    hiba.Add(new User()
+                    List<Termekek> hiba = new List<Termekek>();
+                    hiba.Add(new Termekek()
                     {
                         Id = -1,
-                        Email = ex.Message
+                        Kategoria = ex.Message
                     });
                     return BadRequest(hiba);
                 }
 
             }
+        }
+
+        [HttpPost("CreateNewProduct")]
+        public IActionResult CreateNewProduct(Termekek termek)
+        {
+
         }
     }
 }

@@ -32,5 +32,13 @@ namespace webshop
                 return sBuilder.ToString();
             }
         }
+
+        public static bool CheckPermission(string token, int requiredPermissionLevel)
+        {
+            if(LoggedInUsers.ContainsKey(token) && LoggedInUsers[token].PermissionLevel >= requiredPermissionLevel)
+                return true;
+            else
+                return false;
+        }
     }
 }

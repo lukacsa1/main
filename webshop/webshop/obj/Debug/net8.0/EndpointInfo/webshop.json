@@ -70,6 +70,49 @@
         }
       }
     },
+    "/api/Registration/UserRegistration": {
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Registration/GetNewSalt": {
+      "get": {
+        "tags": [
+          "Registration"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Rendeles": {
       "get": {
         "tags": [
@@ -119,6 +162,92 @@
           "tmpHash": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Szamlazasicimek": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orszag": {
+            "type": "string",
+            "nullable": true
+          },
+          "varos": {
+            "type": "string",
+            "nullable": true
+          },
+          "utca": {
+            "type": "string",
+            "nullable": true
+          },
+          "hazszam": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "iranyitoszam": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loginName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "szamlazasiCimId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "salt": {
+            "type": "string",
+            "nullable": true
+          },
+          "hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "registarionDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "permissionLevel": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "szamlazasiCim": {
+            "$ref": "#/components/schemas/Szamlazasicimek"
           }
         },
         "additionalProperties": false

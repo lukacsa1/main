@@ -32,6 +32,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "webshop.Controllers.RegistrationController",
+    "Method": "GenerateNewSalt",
+    "RelativePath": "api/Registration/GetNewSalt",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.RegistrationController",
+    "Method": "UserRegistration",
+    "RelativePath": "api/Registration/UserRegistration",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "webshop.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "webshop.Controllers.FelhasznalokControllers",
     "Method": "Get",
     "RelativePath": "felhasznalok",

@@ -4,9 +4,9 @@ using webshop.Models;
 namespace webshop.Controllers
 {
 
-    [Route("termekek")]
+    [Route("felhasznalok")]
     [ApiController]
-    public class termekekControllers : ControllerBase
+    public class UsersController : ControllerBase
     {
         [HttpGet]
         public IActionResult Get()
@@ -15,16 +15,16 @@ namespace webshop.Controllers
             {
                 try
                 {
-                    List<Termekek> response = context.Termekeks.ToList();
+                    List<User> response = context.Users.ToList();
                     return Ok(response);
                 }
                 catch (Exception ex)
                 {
-                    List<Termekek> hiba = new List<Termekek>();
-                    hiba.Add(new Termekek()
+                    List<User> hiba = new List<User>();
+                    hiba.Add(new User()
                     {
                         Id = -1,
-                        Kategoria = ex.Message
+                        Email = ex.Message
                     });
                     return BadRequest(hiba);
                 }
