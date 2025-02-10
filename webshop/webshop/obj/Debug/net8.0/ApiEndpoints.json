@@ -18,7 +18,7 @@
   {
     "ContainingType": "webshop.Controllers.LoginController",
     "Method": "GetSalt",
-    "RelativePath": "api/Login/GetSalt/{userName}",
+    "RelativePath": "api/Login/GetSalt/{username}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -58,7 +58,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "webshop.Controllers.FelhasznalokControllers",
+    "ContainingType": "webshop.Controllers.UsersController",
     "Method": "Get",
     "RelativePath": "felhasznalok",
     "HttpMethod": "GET",
@@ -88,13 +88,34 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "webshop.Controllers.termekekControllers",
+    "ContainingType": "webshop.Controllers.ProductsController",
     "Method": "Get",
     "RelativePath": "termekek",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ProductsController",
+    "Method": "CreateNewProduct",
+    "RelativePath": "termekek/CreateNewProduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "termek",
+        "Type": "webshop.Models.Termekek",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

@@ -10,7 +10,7 @@ namespace webshop.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        [HttpPost("GetSalt/{userName}")]
+        [HttpPost("GetSalt/{username}")]
         public async Task<IActionResult> GetSalt(string username)
         {
             using (var context = new WebshopContext())

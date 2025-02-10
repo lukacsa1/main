@@ -33,9 +33,28 @@ namespace webshop.Controllers
         }
 
         [HttpPost("CreateNewProduct")]
-        public IActionResult CreateNewProduct(Termekek termek)
+        public async Task<IActionResult> CreateNewProduct(string token, Termekek termek)
         {
-
+            if(Manager.CheckPermission(token, 9))
+            {
+                using (var context = new WebshopContext())
+                {
+                    try
+                    {
+                        context.Termekeks.Add(termek);
+                        await context.SaveChangesAsync();
+                        return Ok("Az új termék sikeresen hozzáadva!");
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest("Nem sikerült hozzáadni az új terméket! " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                return BadRequest(Manager.UserNotEligableMessage);
+            }
         }
     }
 }
