@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using webshop.Models;
 
 namespace webshop.Controllers
@@ -53,7 +55,39 @@ namespace webshop.Controllers
             }
             else
             {
-                return BadRequest(Manager.UserNotEligableMessage);
+                return Unauthorized(Manager.UserNotEligableMessage);
+            }
+        }
+
+        [HttpPut("UpdateProduct")]
+        public async Task<IActionResult> UpdateProduct(string token, Termekek product)
+        {
+            if(Manager.CheckPermission(token, 9))
+            {
+                using (var context = new WebshopContext())
+                {
+                    try
+                    {
+                        if(context.Termekeks.Where(p => p.Id == product.Id) is not null)
+                        {
+                            var result = context.Termekeks.Update(product);
+                            await context.SaveChangesAsync();
+                            return Ok("Sikeres módosítás!");
+                        } 
+                        else
+                        {
+                            return NotFound("Nincs ilyen termék!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest("Nem sikerült módosítani a terméket! " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                return Unauthorized(Manager.UserNotEligableMessage);
             }
         }
     }

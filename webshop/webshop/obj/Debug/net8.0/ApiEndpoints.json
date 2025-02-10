@@ -117,5 +117,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ProductsController",
+    "Method": "UpdateProduct",
+    "RelativePath": "termekek/UpdateProduct",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "product",
+        "Type": "webshop.Models.Termekek",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
