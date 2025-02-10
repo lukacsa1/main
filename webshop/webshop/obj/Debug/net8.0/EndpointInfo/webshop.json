@@ -58,7 +58,7 @@
         }
       }
     },
-    "/termekek": {
+    "/Termekek/GetProducts": {
       "get": {
         "tags": [
           "Products"
@@ -70,7 +70,30 @@
         }
       }
     },
-    "/termekek/CreateNewProduct": {
+    "/Termekek/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Termekek/CreateNewProduct": {
       "post": {
         "tags": [
           "Products"
@@ -110,7 +133,7 @@
         }
       }
     },
-    "/termekek/UpdateProduct": {
+    "/Termekek/UpdateProduct": {
       "put": {
         "tags": [
           "Products"
@@ -150,7 +173,7 @@
         }
       }
     },
-    "/termekek/DeleteProduct/{Id}": {
+    "/Termekek/DeleteProduct/{Id}": {
       "delete": {
         "tags": [
           "Products"

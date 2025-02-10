@@ -89,18 +89,8 @@
   },
   {
     "ContainingType": "webshop.Controllers.ProductsController",
-    "Method": "Get",
-    "RelativePath": "termekek",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "webshop.Controllers.ProductsController",
     "Method": "CreateNewProduct",
-    "RelativePath": "termekek/CreateNewProduct",
+    "RelativePath": "Termekek/CreateNewProduct",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -121,7 +111,7 @@
   {
     "ContainingType": "webshop.Controllers.ProductsController",
     "Method": "DeleteProduct",
-    "RelativePath": "termekek/DeleteProduct/{Id}",
+    "RelativePath": "Termekek/DeleteProduct/{Id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -141,8 +131,34 @@
   },
   {
     "ContainingType": "webshop.Controllers.ProductsController",
+    "Method": "GetProduct",
+    "RelativePath": "Termekek/GetById/{Id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ProductsController",
+    "Method": "GetProducts",
+    "RelativePath": "Termekek/GetProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ProductsController",
     "Method": "UpdateProduct",
-    "RelativePath": "termekek/UpdateProduct",
+    "RelativePath": "Termekek/UpdateProduct",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

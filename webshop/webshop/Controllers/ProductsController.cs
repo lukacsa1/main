@@ -35,13 +35,13 @@ namespace webshop.Controllers
         }
 
         [HttpGet("GetById/{Id}")]
-        public IActionResult GetProduct(int id)
+        public IActionResult GetProductById(int Id)
         {
             using (var context = new WebshopContext())
             {
                 try
                 {
-                    Termekek selectedProduct = context.Termekeks.FirstOrDefault(p => p.Id == id);
+                    Termekek selectedProduct = context.Termekeks.FirstOrDefault(p => p.Id == Id);
                     if(selectedProduct is not null)
                     {
                         return Ok(selectedProduct);
