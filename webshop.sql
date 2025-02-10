@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 09. 23:59
+-- Létrehozás ideje: 2025. Feb 10. 11:20
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -81,13 +81,43 @@ CREATE TABLE `termekek` (
 
 INSERT INTO `termekek` (`Id`, `TermekNeve`, `meret`, `ar`, `kep`, `kategoria`) VALUES
 (1, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
-(2, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
-(3, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
-(4, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Női'),
-(5, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
-(6, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
-(7, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi'),
-(8, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep1.jpg', 'Férfi');
+(2, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep2.jpg', 'Női'),
+(3, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep3.jpg', 'Női'),
+(4, 'Női Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep4.jpg', 'Női'),
+(5, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep5.jpg', 'Férfi'),
+(6, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep6.jpg', 'Férfi'),
+(7, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep7.jpg', 'Férfi'),
+(8, 'Férfi Póló', '[\"S\", \"M\", \"L\"]', 2999, 'kep8.jpg', 'Férfi'),
+(9, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 3999, 'kep9.jpg', 'Női'),
+(10, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4299, 'kep10.jpg', 'Női'),
+(11, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4599, 'kep11.jpg', 'Női'),
+(12, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 4999, 'kep12.jpg', 'Férfi'),
+(13, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5299, 'kep13.jpg', 'Férfi'),
+(14, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5599, 'kep14.jpg', 'Férfi'),
+(15, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4199, 'kep15.jpg', 'Női'),
+(16, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4499, 'kep16.jpg', 'Női'),
+(17, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 4899, 'kep17.jpg', 'Férfi'),
+(18, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5199, 'kep18.jpg', 'Férfi'),
+(19, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4799, 'kep19.jpg', 'Női'),
+(20, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4599, 'kep20.jpg', 'Női'),
+(21, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5499, 'kep21.jpg', 'Férfi'),
+(22, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5699, 'kep22.jpg', 'Férfi'),
+(23, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4399, 'kep23.jpg', 'Női'),
+(24, 'Női Blúz', '[\"L\", \"XL\", \"XXL\"]', 4999, 'kep24.jpg', 'Női'),
+(25, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 4799, 'kep25.jpg', 'Férfi'),
+(26, 'Férfi Ing', '[\"L\", \"XL\", \"XXL\"]', 5299, 'kep26.jpg', 'Férfi'),
+(27, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 4599, 'kep27.jpg', 'Női'),
+(28, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 5199, 'kep28.jpg', 'Női'),
+(29, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5399, 'kep29.jpg', 'Férfi'),
+(30, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5599, 'kep30.jpg', 'Férfi'),
+(31, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 4999, 'kep31.jpg', 'Női'),
+(32, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 4799, 'kep32.jpg', 'Női'),
+(33, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5699, 'kep33.jpg', 'Férfi'),
+(34, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5899, 'kep34.jpg', 'Férfi'),
+(35, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 4599, 'kep35.jpg', 'Női'),
+(36, 'Női Póló', '[\"L\", \"XL\", \"XXL\"]', 4999, 'kep36.jpg', 'Női'),
+(37, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5499, 'kep37.jpg', 'Férfi'),
+(38, 'Férfi Póló', '[\"L\", \"XL\", \"XXL\"]', 5999, 'kep38.jpg', 'Férfi');
 
 -- --------------------------------------------------------
 
@@ -170,7 +200,7 @@ ALTER TABLE `szamlazasicimek`
 -- AUTO_INCREMENT a táblához `termekek`
 --
 ALTER TABLE `termekek`
-  MODIFY `Id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT a táblához `user`
