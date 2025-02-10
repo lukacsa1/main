@@ -90,5 +90,38 @@ namespace webshop.Controllers
                 return Unauthorized(Manager.UserNotEligableMessage);
             }
         }
+
+        [HttpDelete("DeleteProduct/{Id}")]
+        public async Task<IActionResult> DeleteProduct(string token, int Id)
+        {
+            if(Manager.CheckPermission(token, 9))
+            {
+                using (var context = new WebshopContext())
+                {
+                    try
+                    {
+                        var deleteProduct = context.Termekeks.FirstOrDefault(p => p.Id == Id);
+                        if (deleteProduct is not null)
+                        {
+                            context.Remove(deleteProduct);
+                            await context.SaveChangesAsync();
+                            return Ok("Termék sikeresen törölve!");
+                        }
+                        else
+                        {
+                            return NotFound("Nem található a termék!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest("Nem sikerült törölni a terméket! " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                return Unauthorized(Manager.UserNotEligableMessage);
+            }
+        }
     }
 }

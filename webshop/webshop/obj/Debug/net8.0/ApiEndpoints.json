@@ -120,6 +120,27 @@
   },
   {
     "ContainingType": "webshop.Controllers.ProductsController",
+    "Method": "DeleteProduct",
+    "RelativePath": "termekek/DeleteProduct/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ProductsController",
     "Method": "UpdateProduct",
     "RelativePath": "termekek/UpdateProduct",
     "HttpMethod": "PUT",
