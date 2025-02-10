@@ -12,7 +12,7 @@ const App = () => {
   const [showRegistration, setShowRegistration] = useState(false); // Bejelentkezési modal megjelenítése
 
   useEffect(() => {
-    fetch("https://localhost:7117/termekek")
+    fetch("https://localhost:7117/Termekek/GetProducts")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Hiba a fetch kérés során:", error));
@@ -196,28 +196,122 @@ const Cart = ({ cart, removeFromCart, setShowCart }) => {
   );
 };
 
-//Bejelentkezés
-const LoginModal = ({ setShowLogin, setShowRegistration }) => {
+const LoginModal = ({ setShowLogin }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(""); // Reseteljük az esetleges előző hibát
+
+    if (!username || !password) {
+      setError("Felhasználónév és jelszó megadása kötelező!");
+      return;
+    }
+
+    try {
+      // Először lekérjük a sót a `GetSalt` végpontról
+      const saltResponse = await fetch(`https://localhost:7117/api/Login/GetSalt/${username}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!saltResponse.ok) {
+        throw new Error("Nem sikerült lekérni a sót!");
+      }
+
+      const salt = await saltResponse.text(); // A válasz szöveges formában
+      console.log("Salt:", salt); // Kinyomtatjuk a sót, hogy lássuk
+
+      // Ha a só üres, hibát dobunk
+      if (!salt || salt === 'null') {
+        throw new Error("A só nem érvényes vagy üres.");
+      }
+
+      // A jelszó és a só hashelése
+      const tmpHash = await hashPassword(password, salt); // `hashPassword` egy hashelő függvény (pl. SHA256 vagy egyéb)
+
+      // Most küldjük el a helyes formátumban
+      const loginResponse = await fetch("https://localhost:7117/api/Login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ loginName: username, tmpHash }), // A hashelt jelszó és a felhasználónév
+      });
+
+      const loginTextData = await loginResponse.text(); // A válasz szöveges formában
+
+      // Ellenőrizzük, hogy a válasz JSON-e
+      let data = {};
+      try {
+        data = JSON.parse(loginTextData); // Próbáljuk JSON-ként értelmezni
+      } catch (err) {
+        // Ha nem JSON, akkor nem próbáljuk értelmezni JSON-ként
+        throw new Error("A válasz nem JSON formátumban érkezett!" + loginResponse.status + " " + loginTextData);
+      }
+
+      if (!loginResponse.ok) {
+        throw new Error(data.message || "Hibás bejelentkezési adatok!");
+      }
+
+      // Sikeres bejelentkezés esetén elmentjük az adatokat
+      localStorage.setItem("user", JSON.stringify(data.user));
+      alert("Sikeres bejelentkezés!");
+      setShowLogin(false);
+      window.location.reload(); // Frissítjük az oldalt a változások megjelenítéséhez
+    } catch (err) {
+      setError(err.message); // A hibát jelenítjük meg
+    }
+  };
+
   return (
     <div className="login-modal">
       <div className="login-modal-content">
         <span className="close-login" onClick={() => setShowLogin(false)}>×</span>
         <h2>Bejelentkezés</h2>
-        <form>
-          <label>Felhasználó név:</label>
-          <input type="username" placeholder="Felhasználó név" required />
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <label>Felhasználónév:</label>
+          <input
+            type="text"
+            placeholder="Felhasználónév"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
           <label>Jelszó:</label>
-          <input type="password" placeholder="Jelszó" required />
+          <input
+            type="password"
+            placeholder="Jelszó"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <button type="submit">Belépés</button>
-          <p>Nincs fiókod?</p>
-          <a href="#" className="registration-link" onClick={() => {setShowLogin(false); setShowRegistration(true);}} style={{ cursor: "pointer" }}>Regisztráció</a>
         </form>
       </div>
     </div>
   );
 };
+
+// Hashelési funkció például SHA256
+const hashPassword = async (password, salt) => {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password + salt);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data); // Hashing
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // Array from buffer
+  return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Hex formátum
+};
+
+
+
+
 
 //Regisztráció
 const RegistrationModal = ({ setShowRegistration }) => {
