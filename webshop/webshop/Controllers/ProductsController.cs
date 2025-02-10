@@ -6,12 +6,12 @@ using webshop.Models;
 namespace webshop.Controllers
 {
 
-    [Route("termekek")]
+    [Route("Termekek")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("GetProducts")]
+        public IActionResult GetProducts()
         {
             using (var context = new WebshopContext())
             {
@@ -31,6 +31,30 @@ namespace webshop.Controllers
                     return BadRequest(hiba);
                 }
 
+            }
+        }
+
+        [HttpGet("GetById/{Id}")]
+        public IActionResult GetProduct(int id)
+        {
+            using (var context = new WebshopContext())
+            {
+                try
+                {
+                    Termekek selectedProduct = context.Termekeks.FirstOrDefault(p => p.Id == id);
+                    if(selectedProduct is not null)
+                    {
+                        return Ok(selectedProduct);
+                    }
+                    else
+                    {
+                        return NotFound("A termék nem található!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest("Nem sikerült lekérni a terméket! " + ex.Message);
+                }
             }
         }
 
