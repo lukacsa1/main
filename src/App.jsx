@@ -53,9 +53,9 @@ const App = () => {
     <div>
       <Navbar cartSize={cart.length} setCategory={setCategory} setSearchQuery={setSearchQuery} handleCategoryChange={handleCategoryChange} setShowCart={setShowCart} setShowLogin={setShowLogin} />
       <Banner />
-      <ProductGrid products={products} category={category}  selectedCategory={selectedCategory} searchQuery={searchQuery} addToCart={addToCart} />
+      <ProductGrid products={products} category={category} selectedCategory={selectedCategory} searchQuery={searchQuery} addToCart={addToCart} />
       {showCart && <Cart cart={cart} removeFromCart={removeFromCart} setShowCart={setShowCart} />}
-      {showLogin && <LoginModal setShowLogin={setShowLogin} setShowRegistration={setShowRegistration}/>} {/* 🔹 Bejelentkezési modal */}
+      {showLogin && <LoginModal setShowLogin={setShowLogin} setShowRegistration={setShowRegistration} />} {/* 🔹 Bejelentkezési modal */}
       {showRegistration && <RegistrationModal setShowRegistration={setShowRegistration} />} {/* 🔹 Bejelentkezési modal */}
     </div>
   );
@@ -72,16 +72,16 @@ const Navbar = ({ cartSize, setCategory, setSearchQuery, handleCategoryChange, s
       <div className="logo">Pólók</div>
       <ul className="nav-links">
         <li>
-          <a href="#" onClick={(e) => handleCategoryChange(e, "none",  "Összes póló") }>Összes</a>
+          <a href="#" onClick={(e) => handleCategoryChange(e, "none", "Összes póló")}>Összes</a>
         </li>
         <li>
-          <a href="#" onClick={(e) => handleCategoryChange(e, "Női",  "Női pólók")}>Női</a>
+          <a href="#" onClick={(e) => handleCategoryChange(e, "Női", "Női pólók")}>Női</a>
         </li>
         <li>
           <a href="#" onClick={(e) => handleCategoryChange(e, "Férfi", "Férfi pólók")}>Férfi</a>
         </li>
         <li>
-          <a href="#" onClick={(e) => handleCategoryChange(e, "Unisex",  "Unisex pólók")}>Unisex</a>
+          <a href="#" onClick={(e) => handleCategoryChange(e, "Unisex", "Unisex pólók")}>Unisex</a>
         </li>
       </ul>
       <div className="search-bar">
@@ -196,7 +196,8 @@ const Cart = ({ cart, removeFromCart, setShowCart }) => {
   );
 };
 
-const LoginModal = ({ setShowLogin }) => {
+//Bejelentkezés
+const LoginModal = ({ setShowLogin, setShowRegistration }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -224,7 +225,6 @@ const LoginModal = ({ setShowLogin }) => {
       }
 
       const salt = await saltResponse.text(); // A válasz szöveges formában
-      console.log("Salt:", salt); // Kinyomtatjuk a sót, hogy lássuk
 
       // Ha a só üres, hibát dobunk
       if (!salt || salt === 'null') {
@@ -294,6 +294,10 @@ const LoginModal = ({ setShowLogin }) => {
           />
 
           <button type="submit">Belépés</button>
+          <a href="#" onClick={() => {
+            setShowRegistration(true);
+            setShowLogin(false);
+          }}>Regisztrálj</a>
         </form>
       </div>
     </div>
@@ -309,10 +313,6 @@ const hashPassword = async (password, salt) => {
   return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Hex formátum
 };
 
-
-
-
-
 //Regisztráció
 const RegistrationModal = ({ setShowRegistration }) => {
   const [username, setUsername] = useState("");
@@ -321,17 +321,77 @@ const RegistrationModal = ({ setShowRegistration }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(""); // Hibaüzenet állapota
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Megakadályozza az oldal újratöltését
+  const handleregSubmit = async (e) => {
+    e.preventDefault();
+    setError(""); // Reseteljük az esetleges előző hibát
 
+    if (!username || !password || !email) {
+      setError("Felhasználónév,email és jelszó megadása kötelező!");
+      return;
+    }
     if (password !== confirmPassword) {
       setError("A két jelszó nem egyezik! ❌"); // Hibaüzenet beállítása
       return;
     }
 
-    setError(""); // Ha nincs hiba, töröljük a hibaüzenetet
-    alert("Sikeres regisztráció! ✅"); // Ide jöhetne egy API hívás is
-    setShowRegistration(false);
+    try {
+      // Először lekérjük a sót a `GetSalt` végpontról
+      const saltResponse = await fetch(`https://localhost:7117/api/Registration/GetNewSalt`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!saltResponse.ok) {
+        throw new Error("Nem sikerült lekérni a sót!");
+      }
+
+      const salt = await saltResponse.text(); // A válasz szöveges formában
+
+      // Ha a só üres, hibát dobunk
+      if (!salt || salt === 'null') {
+        throw new Error("A só nem érvényes vagy üres.");
+      }
+
+      // A jelszó és a só hashelése
+      const tmpHash = await hashPassword(password, salt); // `hashPassword` egy hashelő függvény (pl. SHA256 vagy egyéb)
+
+      // Most küldjük el a helyes formátumban
+      const registerResponse = await fetch("https://localhost:7117/api/Registration/UserRegistration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: 0, loginName: username, email: email, szamlazasiCimId: 1, salt: salt, hash: tmpHash, active: 0, registarionDate: "2025-02-10T16:13:55.748Z", permissionLevel: 0, szamlazasiCim: null }), // A hashelt jelszó és a felhasználónév
+      });
+
+      const registerTextData = await registerResponse.text(); // A válasz szöveges formában
+
+      // Ellenőrizzük, hogy a válasz JSON-e
+      const contentType = registerResponse.headers.get("Content-Type");
+      let data = {};
+
+      if (contentType && contentType.includes("application/json")) {
+        data = await registerResponse.json(); // JSON válasz esetén
+      } else {
+        data.message = registerTextData; // Ha nem JSON, akkor csak szöveg
+      }
+
+
+      if (!registerResponse.ok) {
+        throw new Error(data.message || "Hibás bejelentkezési adatok!");
+      }
+
+      // Sikeres bejelentkezés esetén elmentjük az adatokat
+      localStorage.setItem("user", JSON.stringify(data.user));
+      setError(""); // Ha nincs hiba, töröljük a hibaüzenetet
+      alert("Sikeres regisztráció! ✅"); // Ide jöhetne egy API hívás is
+      setShowRegistration(false);
+      window.location.reload(); // Frissítjük az oldalt a változások megjelenítéséhez
+    } catch (err) {
+      setError(err.message); // A hibát jelenítjük meg
+    }
   };
 
   return (
@@ -339,7 +399,7 @@ const RegistrationModal = ({ setShowRegistration }) => {
       <div className="registration-modal-content">
         <span className="close-registration" onClick={() => setShowRegistration(false)}>×</span>
         <h2>Regisztráció</h2>
-        <form onSubmit={handleSubmit}> {/* Megfelelő függvény */}
+        <form onSubmit={handleregSubmit}> {/* Megfelelő függvény */}
           <label>Felhasználónév:</label>
           <input type="text" placeholder="Felhasználónév" required value={username} onChange={(e) => setUsername(e.target.value)} />
 
