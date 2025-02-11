@@ -48,7 +48,7 @@
         }
       }
     },
-    "/api/Image/{filename}": {
+    "/api/Image/ProductImages/DeleteImage": {
       "delete": {
         "tags": [
           "Image"
@@ -56,8 +56,14 @@
         "parameters": [
           {
             "name": "filename",
-            "in": "path",
-            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
             "schema": {
               "type": "string"
             }

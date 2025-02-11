@@ -7,6 +7,7 @@ namespace webshop.Controllers
     [ApiController]
     public class ImageController : ControllerBase
     {
+
         private readonly string _productImageDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Images", "ProductImages");
 
         IWebHostEnvironment _env;
@@ -15,6 +16,10 @@ namespace webshop.Controllers
         {
             _env = env;
         }
+
+
+
+
 
         [Route("ProductImages/UploadImage")]
         [HttpPost]
@@ -62,25 +67,32 @@ namespace webshop.Controllers
             return File(fileStream, imageType);
         }
 
-        [HttpDelete("{filename}")]
-        public IActionResult DeleteImage(string filename)
+        [Route("ProductImages/DeleteImage/")]
+        [HttpDelete]
+        public IActionResult DeleteImage(string filename, string token)
         {
-
-            var filePath = Path.Combine(_productImageDirectory, filename);
-
-            if (!System.IO.File.Exists(filePath))
+            if (Manager.CheckPermission(token, 9))
             {
-                return NotFound("A kép nem található!");
+                var filePath = Path.Combine(_productImageDirectory, filename);
+
+                if (!System.IO.File.Exists(filePath))
+                {
+                    return NotFound("A kép nem található!");
+                }
+
+                try
+                {
+                    System.IO.File.Delete(filePath);
+                    return Ok("A kép sikeresen törölve! " + filePath);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Hiba a kép törlése során: {ex.Message}");
+                }
             }
-
-            try
+            else
             {
-                System.IO.File.Delete(filePath);
-                return Ok("A kép sikeresen törölve! " + filePath);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Hiba a kép törlése során: {ex.Message}");
+                return Unauthorized(Manager.UserNotEligableMessage);
             }
         }
         private string GetImageType(string fileName)

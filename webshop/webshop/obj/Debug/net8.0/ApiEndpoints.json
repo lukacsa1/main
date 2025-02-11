@@ -2,7 +2,7 @@
   {
     "ContainingType": "webshop.Controllers.ImageController",
     "Method": "DeleteImage",
-    "RelativePath": "api/Image/{filename}",
+    "RelativePath": "api/Image/ProductImages/DeleteImage",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -10,7 +10,12 @@
       {
         "Name": "filename",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
