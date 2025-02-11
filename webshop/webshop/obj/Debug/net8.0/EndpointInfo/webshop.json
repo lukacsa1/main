@@ -5,6 +5,27 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Image/ProductImages/UploadImage": {
+      "post": {
+        "tags": [
+          "Image"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Login/GetSalt/{username}": {
       "post": {
         "tags": [
@@ -77,7 +98,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "Id",
             "in": "path",
             "required": true,
             "schema": {

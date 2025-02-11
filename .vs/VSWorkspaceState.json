@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\webshop",
+    "\\webshop\\webshop",
+    "\\webshop\\webshop\\Controllers"
   ],
-  "SelectedNode": "\\C:\\Users\\vargab\\Documents\\ProjektmunkaRepo",
+  "SelectedNode": "\\webshop\\webshop\\Controllers\\RegistrationController.cs",
   "PreviewInSolutionExplorer": false
 }

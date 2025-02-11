@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "webshop.Controllers.ImageController",
+    "Method": "UploadImage",
+    "RelativePath": "api/Image/ProductImages/UploadImage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "webshop.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login",
@@ -131,14 +147,14 @@
   },
   {
     "ContainingType": "webshop.Controllers.ProductsController",
-    "Method": "GetProduct",
+    "Method": "GetProductById",
     "RelativePath": "Termekek/GetById/{Id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Id",
         "Type": "System.Int32",
         "IsRequired": true
       }
