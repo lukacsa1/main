@@ -48,6 +48,28 @@
         }
       }
     },
+    "/api/Image/{filename}": {
+      "delete": {
+        "tags": [
+          "Image"
+        ],
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Login/GetSalt/{username}": {
       "post": {
         "tags": [

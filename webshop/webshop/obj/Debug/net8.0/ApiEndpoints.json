@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "webshop.Controllers.ImageController",
+    "Method": "DeleteImage",
+    "RelativePath": "api/Image/{filename}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filename",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ImageController",
     "Method": "GetProductImageByName",
     "RelativePath": "api/Image/ProductImages/GetImageByName/{fileName}",
     "HttpMethod": "GET",

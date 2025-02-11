@@ -7,6 +7,8 @@ namespace webshop.Controllers
     [ApiController]
     public class ImageController : ControllerBase
     {
+        private readonly string _productImageDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Images", "ProductImages");
+
         IWebHostEnvironment _env;
 
         public ImageController(IWebHostEnvironment env)
@@ -47,18 +49,39 @@ namespace webshop.Controllers
         [HttpGet]
         public IActionResult GetProductImageByName(string fileName)
         {
-            string _productImageDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Images", "ProductImages");
 
             var filePath = Path.Combine(_productImageDirectory, fileName);
 
             if (!System.IO.File.Exists(filePath))
             {
-                return NotFound("Image not found " + filePath);
+                return NotFound("A kép nem található!");
             }
 
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            var mimeType = GetImageType(fileName);
-            return File(fileStream, mimeType);
+            var imageType = GetImageType(fileName);
+            return File(fileStream, imageType);
+        }
+
+        [HttpDelete("{filename}")]
+        public IActionResult DeleteImage(string filename)
+        {
+
+            var filePath = Path.Combine(_productImageDirectory, filename);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("A kép nem található!");
+            }
+
+            try
+            {
+                System.IO.File.Delete(filePath);
+                return Ok("A kép sikeresen törölve! " + filePath);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Hiba a kép törlése során: {ex.Message}");
+            }
         }
         private string GetImageType(string fileName)
         {
