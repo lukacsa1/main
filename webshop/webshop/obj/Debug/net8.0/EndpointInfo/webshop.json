@@ -26,6 +26,28 @@
         }
       }
     },
+    "/api/Image/ProductImages/GetImageByName/{fileName}": {
+      "get": {
+        "tags": [
+          "Image"
+        ],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Login/GetSalt/{username}": {
       "post": {
         "tags": [

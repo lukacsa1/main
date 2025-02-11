@@ -16,7 +16,7 @@ namespace webshop.Controllers
 
         [Route("ProductImages/UploadImage")]
         [HttpPost]
-        public IActionResult UploadImage(string token)
+        public IActionResult UploadProductImage(string token)
         {
             if (Manager.CheckPermission(token, 9))
             {
@@ -41,6 +41,37 @@ namespace webshop.Controllers
             {
                 return Unauthorized(Manager.UserNotEligableMessage);
             }
+        }
+
+        [Route("ProductImages/GetImageByName/{fileName}")]
+        [HttpGet]
+        public IActionResult GetProductImageByName(string fileName)
+        {
+            string _productImageDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Images", "ProductImages");
+
+            var filePath = Path.Combine(_productImageDirectory, fileName);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("Image not found " + filePath);
+            }
+
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            var mimeType = GetImageType(fileName);
+            return File(fileStream, mimeType);
+        }
+        private string GetImageType(string fileName)
+        {
+            var extension = Path.GetExtension(fileName).ToLower();
+            return extension switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                ".bmp" => "image/bmp",
+                ".webp" => "image/webp",
+                _ => "application/octet-stream"
+            };
         }
     }
 }

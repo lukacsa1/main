@@ -1,7 +1,23 @@
 [
   {
     "ContainingType": "webshop.Controllers.ImageController",
-    "Method": "UploadImage",
+    "Method": "GetProductImageByName",
+    "RelativePath": "api/Image/ProductImages/GetImageByName/{fileName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webshop.Controllers.ImageController",
+    "Method": "UploadProductImage",
     "RelativePath": "api/Image/ProductImages/UploadImage",
     "HttpMethod": "POST",
     "IsController": true,
